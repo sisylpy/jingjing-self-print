@@ -1,0 +1,58 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "A simple Electron app with electron-builder",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "concurrently \"npm run dev:vue\" \"npm run dev:electron\"",
+    "dev:vue": "cd vue && vite",
+    "dev:electron": "wait-on http://localhost:3000 && electron .",
+    "build:vue": "cd vue && vite build",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "club.grainservice.www",
+    "productName": "MyElectronApp",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/512.ico"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/512.ico"
+    }
+  },
+  "author": "Li Pei Yi",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "concurrently": "^9.1.0",
+    "electron": "^19.1.9",
+    "electron-builder": "^23.6.0",
+    "electron-devtools-installer": "^4.0.0",
+    "vite": "^6.0.3",
+    "wait-on": "^8.0.1"
+  },
+  "dependencies": {
+    "@nut-tree/nut-js": "^3.1.2",
+    "admin-lte": "^4.0.0-beta2",
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "bootstrap-vue-3": "^0.5.1",
+    "jquery": "^3.7.1",
+    "qrcode": "^1.5.4",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vuex": "^4.0.2"
+  }
+}
